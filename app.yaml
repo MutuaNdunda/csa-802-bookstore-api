@@ -1,0 +1,10 @@
+runtime: python311
+
+entrypoint: gunicorn -b :$PORT app:app
+
+env_variables:
+  API_KEY: "openuni442348"
+
+handlers:
+- url: /.*
+  script: auto
