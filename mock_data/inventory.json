@@ -1,0 +1,5 @@
+[
+    {"id": "B001", "title": "Python Crash Course", "stock": 10, "price": 1500},
+    {"id": "B002", "title": "Clean Code", "stock": 5, "price": 2000},
+    {"id": "B003", "title": "Data Science Handbook", "stock": 7, "price": 2500}
+]
