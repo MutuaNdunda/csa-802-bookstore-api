@@ -1,61 +1,61 @@
-openapi: 3.0.0
-info:
-  title: Bookstore Integration API
-  version: 1.0.0
+  openapi: 3.0.0
+  info:
+    title: Bookstore Integration API
+    version: 1.0.0
 
-servers:
-  - url: http://localhost:5000
+  servers:
+    - url: http://localhost:5000
 
-paths:
-  /api/books:
-    get:
-      summary: Get all books
-      security:
-        - ApiKeyAuth: []
-      responses:
-        '200':
-          description: List of all books
+  paths:
+    /api/books:
+      get:
+        summary: Get all books
+        security:
+          - ApiKeyAuth: []
+        responses:
+          '200':
+            description: List of all books
 
-  /api/books/{book_id}:
-    get:
-      summary: Get book details
-      parameters:
-        - in: path
-          name: book_id
+    /api/books/{book_id}:
+      get:
+        summary: Get book details
+        parameters:
+          - in: path
+            name: book_id
+            required: true
+            schema:
+              type: string
+        security:
+          - ApiKeyAuth: []
+        responses:
+          '200':
+            description: Book details
+
+    /api/orders:
+      post:
+        summary: Place a new order
+        security:
+          - ApiKeyAuth: []
+        requestBody:
           required: true
-          schema:
-            type: string
-      security:
-        - ApiKeyAuth: []
-      responses:
-        '200':
-          description: Book details
+        responses:
+          '201':
+            description: Order created
 
-  /api/orders:
-    post:
-      summary: Place a new order
-      security:
-        - ApiKeyAuth: []
-      requestBody:
-        required: true
-      responses:
-        '201':
-          description: Order created
+    /api/delivery/update:
+      post:
+        summary: Update delivery information
+        security:
+          - ApiKeyAuth: []
+        requestBody:
+          required: true
+        responses:
+          '201':
+            description: Delivery updated
 
-  /api/delivery/update:
-    post:
-      summary: Update delivery information
-      security:
-        - ApiKeyAuth: []
-      requestBody:
-        required: true
-      responses:
-        '201':
-          description: Delivery updated
-
-components:
-  securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: header
-      name: x-api-key
+  components:
+    securitySchemes:
+      ApiKeyAuth:
+        type: apiKey
+        in: header
+        name: x-api-key
